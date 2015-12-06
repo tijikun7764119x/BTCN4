@@ -1,6 +1,7 @@
 ﻿using BTCN4_1212451.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net.Http.Formatting;
@@ -90,13 +91,16 @@ namespace BTCN4_1212451
 
         private SyndicationItem BuildSyndicationItem(News u)
         {
+            
+            DateTime dt = DateTime.ParseExact(u.date, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            
             var item = new SyndicationItem()
             {
                 Title = new TextSyndicationContent(u.title),
                 Content = new TextSyndicationContent(u.title),
-                PublishDate = new DateTimeOffset(DateTime.Parse(u.date))
+                PublishDate = new DateTimeOffset(dt)
             };
-            item.Authors.Add(new SyndicationPerson() { Name = "1212451" });
+            item.Authors.Add(new SyndicationPerson() { Name = "FITHCMUS" });
             return item;
         }
     }

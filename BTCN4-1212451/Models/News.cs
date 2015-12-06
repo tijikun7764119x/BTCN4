@@ -7,7 +7,7 @@ namespace BTCN4_1212451.Models
 {
     public class News
     {
-        public string title;
-        public string date;
+        public string title{get; set;}
+        public string date { get; set; }
     }
 }

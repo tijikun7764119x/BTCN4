@@ -17,8 +17,10 @@ namespace BTCN4_1212451.Controllers
     {
         IUrlRepository ShowPosts = new UrlRepository();
         [Route("api/fithcmus/news")]
+        
         public async Task<IEnumerable<News>> GetNews()
         {
+            Request.Headers.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/rss+xml"));
             // Setup the configuration to support document loading
             var config = new Configuration().WithDefaultLoader();
             var address = "http://www.fit.hcmus.edu.vn/vn/Default.aspx?tabid=97";
