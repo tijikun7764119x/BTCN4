@@ -15,7 +15,7 @@ namespace BTCN4_1212451.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class ExtractAPIController : ApiController
     {
-        IUrlRepository ShowPosts = new UrlRepository();
+        IUrlRepository url = new UrlRepository();
         [Route("api/fithcmus/news")]
         
         public async Task<IEnumerable<News>> GetNews()
@@ -28,29 +28,29 @@ namespace BTCN4_1212451.Controllers
             // Asynchronously get the document in a new context using the configuration
             //var document = await BrowsingContext.New(config).OpenAsync(address);
             // This CSS selector gets the desired content
-            var aShowPostLinks = "a.ShowPostLinks";
-            var spanShowPostDate = "span.ShowPostDate";
+            var tagaShowPostLinks = "a.ShowPostLinks";
+            var tagspanShowPostDate = "span.ShowPostDate";
             // Perform the query to get all cells with the content
-            var cells_aShowPostLinks = document.QuerySelectorAll(aShowPostLinks);
-            var cells_spanShowPostDate = document.QuerySelectorAll(spanShowPostDate);
+            var cell_tagaShowPostLinks = document.QuerySelectorAll(tagaShowPostLinks);
+            var cell_tagspanShowPostDate = document.QuerySelectorAll(tagspanShowPostDate);
             // We are only interested in the text - select it with LINQ
-            List<String> titles_cells_aShowPostLinks = cells_aShowPostLinks.Select(m => m.TextContent).ToList();
-            List<String> titles_cells_cells_spanShowPostDate = cells_spanShowPostDate.Select(m => m.TextContent).ToList();
+            List<String> list_cells_tagaShowPostLinks = cell_tagaShowPostLinks.Select(m => m.TextContent).ToList();
+            List<String> list_cells_tagspanShowPostDate = cell_tagspanShowPostDate.Select(m => m.TextContent).ToList();
 
-            int countshowpost = titles_cells_aShowPostLinks.Count();
+            int amout = list_cells_tagaShowPostLinks.Count();
             Regex regex = new Regex(@"\d+\/\d+\/\d+");
-            for (int i = 0; i < countshowpost; i++)
+            for (int i = 0; i < amout; i++)
             {
                 News temp = new News()
                 {
-                    title = titles_cells_aShowPostLinks[i],
-                    date = regex.Match(titles_cells_cells_spanShowPostDate[i]).Value
+                    title = list_cells_tagaShowPostLinks[i],
+                    date = regex.Match(list_cells_tagspanShowPostDate[i]).Value
                 };
 
-                ShowPosts.Add(temp);
+                url.Add(temp);
             }
 
-            return ShowPosts.GetAll();
+            return url.GetAll();
         }
     }
 }
