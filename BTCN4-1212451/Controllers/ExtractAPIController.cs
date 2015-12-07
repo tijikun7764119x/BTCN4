@@ -55,8 +55,7 @@ namespace BTCN4_1212451.Controllers
             {
                 string str_title = list_cells_tagtd_title[i].Replace('\n', '\t');
                 str_title = System.Text.RegularExpressions.Regex.Replace(str_title, "\t", "");
-                string str_href = list_cells_tagtd_title_href[i].Substring(list_cells_tagtd_title_href[i].IndexOf("href=\"") + 6, list_cells_tagtd_title_href[i].IndexOf("\" title") - list_cells_tagtd_title_href[i].IndexOf("href=\"") - 6);
-                str_href = System.Text.RegularExpressions.Regex.Replace(str_href, "&amp;", "&");
+                string str_href = list_cells_tagtd_title_href[i].Substring(list_cells_tagtd_title_href[i].IndexOf("href=\"") + 6, list_cells_tagtd_title_href[i].IndexOf("\" title") - list_cells_tagtd_title_href[i].IndexOf("href=\"") - 6);                
                 string str_day = number.Match(list_cells_tagtd_day_month[i * 2]).Value;
                 string str_month = number.Match(list_cells_tagtd_day_month[i * 2 + 1]).Value;
                 string str_year = number.Match(list_cells_tagtd_post_year[i]).Value;
