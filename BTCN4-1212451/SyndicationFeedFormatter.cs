@@ -98,7 +98,7 @@ namespace BTCN4_1212451
             {
                 Title = new TextSyndicationContent(u.title),
                 Content = new TextSyndicationContent(u.title),
-               // BaseUri = new Uri(u.href),
+                BaseUri = new Uri(u.href),
                 PublishDate = new DateTimeOffset(dt)
             };
             item.Authors.Add(new SyndicationPerson() { Name = "FITHCMUS" });
