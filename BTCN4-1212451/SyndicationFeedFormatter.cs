@@ -92,15 +92,15 @@ namespace BTCN4_1212451
         private SyndicationItem BuildSyndicationItem(News u)
         {
             
-            DateTime dt = DateTime.ParseExact(u.date, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            
+            //DateTime dt = DateTime.ParseExact(u.date, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            DateTime dt = new DateTime(Int32.Parse(u.year), Int32.Parse(u.month), Int32.Parse(u.day));
             var item = new SyndicationItem()
             {
                 Title = new TextSyndicationContent(u.title),
                 Content = new TextSyndicationContent(u.title),
                 PublishDate = new DateTimeOffset(dt)
             };
-            item.Authors.Add(new SyndicationPerson() { Name = "FITHCMUS" });
+            item.Authors.Add(new SyndicationPerson() { Name = "1212451-FITHCMUS" });
             return item;
         }
     }

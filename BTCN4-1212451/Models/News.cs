@@ -8,6 +8,8 @@ namespace BTCN4_1212451.Models
     public class News
     {
         public string title{get; set;}
-        public string date { get; set; }
+        public string day { get; set; }
+        public string month { get; set; }
+        public string year { get; set; }
     }
 }
